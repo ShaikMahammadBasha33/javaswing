@@ -35,6 +35,13 @@ public class Calculator implements ActionListener {
         textfield.setBounds(50, 25, 300, 50);
         textfield.setFont(myFont);
         textfield.setEditable(false);
+        
+        for (int i = 0; i < 10; i++) {
+            numberButtons[i] = new JButton(String.valueOf(i));
+            numberButtons[i].addActionListener(this);
+            numberButtons[i].setFont(myFont);
+            numberButtons[i].setFocusable(false);
+        }
 
         addButton = new JButton("+");
         subButton = new JButton("-");
@@ -60,12 +67,7 @@ public class Calculator implements ActionListener {
             functionButtons[i].setFocusable(false);
         }
 
-        for (int i = 0; i < 10; i++) {
-            numberButtons[i] = new JButton(String.valueOf(i));
-            numberButtons[i].addActionListener(this);
-            numberButtons[i].setFont(myFont);
-            numberButtons[i].setFocusable(false);
-        }
+       
 
         delButton.setBounds(50, 430, 145, 50);
         clrButton.setBounds(205, 430, 145, 50);
@@ -120,9 +122,9 @@ public class Calculator implements ActionListener {
                 num2 = Double.parseDouble(textfield.getText());
 
                 if (operator == ' ') {
-                    num1 = num2; // first time
+                    num1 = num2; 
                 } else {
-                    calculate(); // perform previous operation
+                    calculate(); 
                 }
 
                 textfield.setText("");
@@ -173,7 +175,8 @@ public class Calculator implements ActionListener {
             case '*': result = num1 * num2; break;
             case '/': 
                 if (num2 != 0) result = num1 / num2;
-                else result = 0;
+                else javax.swing.JOptionPane.showMessageDialog(null, "Error: Division by zero!");
+                result = 0;
                 break;
         }
         num1 = result;
