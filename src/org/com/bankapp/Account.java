@@ -29,8 +29,8 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account Number: " + accountNumber + 
-               ", Balance: Rs" + String.format("%.2f", balance) + 
-               ", Account Type: " + accountType;
+        return "Acc Number: " + accountNumber + 
+               ", Bal: Rs" + String.format("%.2f", balance) + 
+               ", Acc Type: " + accountType;
     }
 }

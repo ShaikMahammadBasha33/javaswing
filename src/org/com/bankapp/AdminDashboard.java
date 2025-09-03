@@ -93,7 +93,7 @@ public class AdminDashboard {
 
 		// Add Menu Bar
 		JMenuBar menuBar = new JMenuBar();
-		JMenu fileMenu = new JMenu("File");
+		JMenu fileMenu = new JMenu("Window");
 		JMenu helpMenu = new JMenu("Help");
 
 		JMenuItem logoutMenuItem = new JMenuItem("Logout");
@@ -118,150 +118,153 @@ public class AdminDashboard {
 	}
 
 	public void refreshTable() {
-		tableModel.setRowCount(0); // Clear table
+		tableModel.setRowCount(0);
+
 		for (User user : bankService.getUsers()) {
-			if (user.getAccount() != null) {
-				tableModel.addRow(new Object[] {
-					user.getName(),
-					user.getRole(),
-					user.getAccount().getAccountNumber(),
-					user.getAccount().getBalance(),
-					user.getAccount().getAccountType()
-				});
+			// Check if the user has any accounts
+			if (user.getAccounts().isEmpty()) {
+				tableModel.addRow(new Object[] { user.getName(), user.getRole(), "N/A", "N/A", "N/A" });
 			} else {
-				tableModel.addRow(new Object[] {
-					user.getName(),
-					user.getRole(),
-					"N/A", "N/A", "N/A"
-				});
+				// Add each account for the user
+				for (Account account : user.getAccounts()) {
+					tableModel.addRow(new Object[] { user.getName(), user.getRole(), account.getAccountNumber(),
+							account.getBalance(), account.getAccountType() });
+				}
 			}
 		}
 	}
 
 	public void filterByAccountType(String accountType) {
 		tableModel.setRowCount(0); // Clear table
+
 		for (User user : bankService.getUsers()) {
-			if (user.getAccount() != null &&
-				user.getAccount().getAccountType().equalsIgnoreCase(accountType)) {
-				tableModel.addRow(new Object[] {
-					user.getName(),
-					user.getRole(),
-					user.getAccount().getAccountNumber(),
-					user.getAccount().getBalance(),
-					user.getAccount().getAccountType()
-				});
+			// Check each account for the specified account type
+			for (Account account : user.getAccounts()) {
+				if (account.getAccountType().equalsIgnoreCase(accountType)) {
+					tableModel.addRow(new Object[] { user.getName(), user.getRole(), account.getAccountNumber(),
+							account.getBalance(), account.getAccountType() });
+				}
 			}
 		}
 	}
 
 	public void showAddUserForm() {
-	    JDialog addUserDialog = new JDialog(adminFrame, "Add New User", true);
-	    addUserDialog.setSize(400, 400);
-	    addUserDialog.setLayout(null);
+		JDialog addUserDialog = new JDialog(adminFrame, "Add Account for User", true);
+		addUserDialog.setSize(400, 450);
+		addUserDialog.setLayout(null);
 
-	    // Username label and text field
-	    JLabel nameLabel = new JLabel("Username:");
-	    nameLabel.setBounds(50, 30, 100, 25);
-	    addUserDialog.add(nameLabel);
+		// Username input
+		JLabel nameLabel = new JLabel("Username:");
+		nameLabel.setBounds(50, 30, 100, 25);
+		addUserDialog.add(nameLabel);
+		JTextField nameField = new JTextField();
+		nameField.setBounds(200, 30, 150, 25);
+		addUserDialog.add(nameField);
 
-	    JTextField nameField = new JTextField();
-	    nameField.setBounds(200, 30, 150, 25);
-	    addUserDialog.add(nameField);
+		// Password input
+		JLabel passwordLabel = new JLabel("Password:");
+		passwordLabel.setBounds(50, 70, 100, 25);
+		addUserDialog.add(passwordLabel);
+		JPasswordField passwordField = new JPasswordField();
+		passwordField.setBounds(200, 70, 150, 25);
+		addUserDialog.add(passwordField);
 
-	    // Password label and password field
-	    JLabel passwordLabel = new JLabel("Password:");
-	    passwordLabel.setBounds(50, 70, 100, 25);
-	    addUserDialog.add(passwordLabel);
+		// Role dropdown
+		JLabel roleLabel = new JLabel("Role (Admin/User):");
+		roleLabel.setBounds(50, 110, 150, 25);
+		addUserDialog.add(roleLabel);
+		JComboBox<String> roleComboBox = new JComboBox<>(new String[] { "User", "Admin" });
+		roleComboBox.setBounds(200, 110, 150, 25);
+		addUserDialog.add(roleComboBox);
 
-	    JPasswordField passwordField = new JPasswordField();
-	    passwordField.setBounds(200, 70, 150, 25);
-	    addUserDialog.add(passwordField);
+		// Account number
+		JLabel accountNumberLabel = new JLabel("Account Number:");
+		accountNumberLabel.setBounds(50, 150, 150, 25);
+		addUserDialog.add(accountNumberLabel);
+		JTextField accountNumberField = new JTextField();
+		accountNumberField.setBounds(200, 150, 150, 25);
+		addUserDialog.add(accountNumberField);
 
-	    // Role label and combo box
-	    JLabel roleLabel = new JLabel("Role (Admin/User):");
-	    roleLabel.setBounds(50, 110, 150, 25);
-	    addUserDialog.add(roleLabel);
+		// Balance input
+		JLabel balanceLabel = new JLabel("Balance:");
+		balanceLabel.setBounds(50, 190, 150, 25);
+		addUserDialog.add(balanceLabel);
+		JTextField balanceField = new JTextField();
+		balanceField.setBounds(200, 190, 150, 25);
+		addUserDialog.add(balanceField);
 
-	    JComboBox<String> roleComboBox = new JComboBox<>(new String[] { "User", "Admin" });
-	    roleComboBox.setBounds(200, 110, 150, 25);
-	    addUserDialog.add(roleComboBox);
+		// Account type dropdown
+		JLabel accountTypeLabel = new JLabel("Account Type:");
+		accountTypeLabel.setBounds(50, 230, 150, 25);
+		addUserDialog.add(accountTypeLabel);
+		JComboBox<String> accountTypeComboBox = new JComboBox<>(new String[] { "Savings", "Current" });
+		accountTypeComboBox.setBounds(200, 230, 150, 25);
+		addUserDialog.add(accountTypeComboBox);
 
-	    // Account Number label and text field
-	    JLabel accountNumberLabel = new JLabel("Account Number:");
-	    accountNumberLabel.setBounds(50, 150, 150, 25);
-	    addUserDialog.add(accountNumberLabel);
+		// Save button
+		JButton saveButton = new JButton("Save");
+		saveButton.setBounds(100, 300, 90, 25);
+		addUserDialog.add(saveButton);
 
-	    JTextField accountNumberField = new JTextField();
-	    accountNumberField.setBounds(200, 150, 150, 25);
-	    addUserDialog.add(accountNumberField);
+		// Cancel button
+		JButton cancelButton = new JButton("Cancel");
+		cancelButton.setBounds(200, 300, 90, 25);
+		addUserDialog.add(cancelButton);
 
-	    // Balance label and text field
-	    JLabel balanceLabel = new JLabel("Balance:");
-	    balanceLabel.setBounds(50, 190, 150, 25);
-	    addUserDialog.add(balanceLabel);
+		// Save Button Action Listener
+		saveButton.addActionListener(e -> {
+			// Validation
+			if (nameField.getText().trim().isEmpty() || passwordField.getPassword().length == 0
+					|| accountNumberField.getText().trim().isEmpty() || balanceField.getText().trim().isEmpty()
+					|| accountTypeComboBox.getSelectedItem() == null) {
+				JOptionPane.showMessageDialog(addUserDialog, "All fields are required!", "Error",
+						JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 
-	    JTextField balanceField = new JTextField();
-	    balanceField.setBounds(200, 190, 150, 25);
-	    addUserDialog.add(balanceField);
+			try {
+				String username = nameField.getText().trim();
+				String password = new String(passwordField.getPassword());
+				String role = roleComboBox.getSelectedItem().toString();
+				String accountNumber = accountNumberField.getText().trim();
+				double balance = Double.parseDouble(balanceField.getText().trim());
+				String accountType = accountTypeComboBox.getSelectedItem().toString();
 
-	    // Account Type label and combo box
-	    JLabel accountTypeLabel = new JLabel("Account Type (Savings/Current):");
-	    accountTypeLabel.setBounds(50, 230, 150, 25);
-	    addUserDialog.add(accountTypeLabel);
+				// Check if user already exists
+				User existingUser = bankService.findUserByName(username);
+				if (existingUser != null) {
+					// Check if the user already has the same account type
+					if (existingUser.hasAccountType(accountType)) {
+						JOptionPane.showMessageDialog(addUserDialog, "User already has a " + accountType + " account.",
+								"Error", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
 
-	    JComboBox<String> accountTypeComboBox = new JComboBox<>(new String[] { "Savings", "Current" });
-	    accountTypeComboBox.setBounds(200, 230, 150, 25);
-	    addUserDialog.add(accountTypeComboBox);
+					// Add new account to the existing user
+					existingUser.addAccount(new Account(accountNumber, balance, accountType));
+				} else {
+					// Create a new user with the account
+					bankService.addUser(username, password, role, new Account(accountNumber, balance, accountType));
+				}
 
-	    // Save button
-	    JButton saveButton = new JButton("Save");
-	    saveButton.setBounds(100, 300, 100, 25);
-	    addUserDialog.add(saveButton);
+				refreshTable();
+				JOptionPane.showMessageDialog(addUserDialog, "Account added successfully!", "Success",
+						JOptionPane.INFORMATION_MESSAGE);
+				addUserDialog.dispose();
 
-	    // Cancel button
-	    JButton cancelButton = new JButton("Cancel");
-	    cancelButton.setBounds(210, 300, 100, 25);
-	    addUserDialog.add(cancelButton);
+			} catch (NumberFormatException ex) {
+				JOptionPane.showMessageDialog(addUserDialog, "Invalid input for balance!", "Error",
+						JOptionPane.ERROR_MESSAGE);
+			}
+		});
 
-	    // Action Listener for Save Button
-	    saveButton.addActionListener(e -> {
-	        // Form validation
-	        if (nameField.getText().trim().isEmpty() ||
-	            passwordField.getPassword().length == 0 ||
-	            roleComboBox.getSelectedItem() == null ||
-	            accountNumberField.getText().trim().isEmpty() ||
-	            balanceField.getText().trim().isEmpty() ||
-	            accountTypeComboBox.getSelectedItem() == null) {
-	            JOptionPane.showMessageDialog(addUserDialog, "All fields are required.", "Error", JOptionPane.ERROR_MESSAGE);
-	            return; // Stop further execution
-	        }
+		// Cancel button action
+		cancelButton.addActionListener(e -> addUserDialog.dispose());
 
-	        try {
-	            // Validate and gather inputs
-	            String username = nameField.getText().trim();
-	            String password = new String(passwordField.getPassword());
-	            String role = roleComboBox.getSelectedItem().toString();
-	            String accountNumber = accountNumberField.getText().trim();
-	            double balance = Double.parseDouble(balanceField.getText().trim());
-	            String accountType = accountTypeComboBox.getSelectedItem().toString();
-
-	            // Add user to the BankService and refresh the table
-	            bankService.addUser(username, password, role, new Account(accountNumber, balance, accountType));
-	            refreshTable();
-	            JOptionPane.showMessageDialog(addUserDialog, "User added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-	            addUserDialog.dispose();
-
-	        } catch (NumberFormatException ex) {
-	            JOptionPane.showMessageDialog(addUserDialog, "Invalid Balance. Please enter a valid number.", "Error", JOptionPane.ERROR_MESSAGE);
-	        }
-	    });
-
-	    // Action Listener for Cancel Button
-	    cancelButton.addActionListener(e -> addUserDialog.dispose());
-
-	    addUserDialog.setLocationRelativeTo(adminFrame);
-	    addUserDialog.setVisible(true);
+		addUserDialog.setLocationRelativeTo(adminFrame);
+		addUserDialog.setVisible(true);
 	}
+
 	public void deleteSelectedUser() {
 		int selectedRow = userTable.getSelectedRow();
 		if (selectedRow >= 0) {
@@ -275,17 +278,22 @@ public class AdminDashboard {
 		}
 	}
 
-	public JButton createIconButton(String iconPath, String tooltip) {
-		try {
-			ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource(iconPath)); // Load icon
-			JButton button = new JButton(icon);
-			button.setToolTipText(tooltip);
-			return button;
-		} catch (Exception e) {
-			System.err.println("Failed to load icon: " + iconPath);
-			e.printStackTrace(); // Print full error
-			JButton button = new JButton(tooltip); // Fallback to text if icon fails
-			return button;
-		}
+	public JButton createIconButton(String iconPath, String buttonText) {
+	    JButton button = new JButton(buttonText); // Default button with text
+
+	    try {
+	        ImageIcon originalIcon = new ImageIcon(getClass().getClassLoader().getResource(iconPath));
+	        Image scaledImage = originalIcon.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH); 
+	        ImageIcon resizedIcon = new ImageIcon(scaledImage);
+	        button.setIcon(resizedIcon); 
+
+	        button.setHorizontalTextPosition(SwingConstants.RIGHT); 
+	        button.setVerticalTextPosition(SwingConstants.CENTER); 
+	        button.setIconTextGap(10); 
+	    } catch (Exception e) {
+	        System.err.println("Icon not found: " + iconPath);
+	    }
+
+	    return button;
 	}
 }

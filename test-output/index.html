@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\shaikmahammad_basha\AppData\Local\Temp\testng-eclipse--479423324\testng-customsuite.xml</span>
+                    <span>C:\Users\shaikmahammad_basha\AppData\Local\Temp\testng-eclipse-162847229\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -92,7 +92,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">9 methods,   9 passed</span>
+                    <span class="method-stats">12 methods,   12 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -113,6 +113,11 @@
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="org.com.test.bankapp.LoginPageTest" class="method navigator-link" hash-for-method="testAdminLogin">testAdminLogin</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Default_suite" title="org.com.test.bankapp.BankServiceTest" class="method navigator-link" hash-for-method="testDeleteUserFailure">testDeleteUserFailure</a> <!-- method navigator-link -->
                       </span>
                       <br/>
@@ -129,6 +134,16 @@
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Default_suite" title="org.com.test.bankapp.BankServiceTest" class="method navigator-link" hash-for-method="testGetUsers">testGetUsers</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="org.com.test.bankapp.LoginPageTest" class="method navigator-link" hash-for-method="testInvalidLogin">testInvalidLogin</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="org.com.test.bankapp.LoginPageTest" class="method navigator-link" hash-for-method="testUserLogin">testUserLogin</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -229,10 +244,39 @@
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
           </div> <!-- suite-Default_suite-class-passed -->
+          <div class="suite-Default_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">org.com.test.bankapp.LoginPageTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testAdminLogin">
+                  </a> <!-- testAdminLogin -->
+                  <span class="method-name">testAdminLogin</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testInvalidLogin">
+                  </a> <!-- testInvalidLogin -->
+                  <span class="method-name">testInvalidLogin</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testUserLogin">
+                  </a> <!-- testUserLogin -->
+                  <span class="method-name">testUserLogin</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Default_suite-class-passed -->
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\shaikmahammad_basha\AppData\Local\Temp\testng-eclipse--479423324\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\shaikmahammad_basha\AppData\Local\Temp\testng-eclipse-162847229\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -242,6 +286,7 @@
   &lt;test thread-count=&quot;5&quot; name=&quot;Default test&quot; verbose=&quot;2&quot;&gt;
     &lt;classes&gt;
       &lt;class name=&quot;org.com.test.bankapp.BankServiceTest&quot;/&gt;
+      &lt;class name=&quot;org.com.test.bankapp.LoginPageTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -255,7 +300,7 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Default test (1 class)</span>
+                <span class="test-name">Default test (2 classes)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -281,48 +326,60 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(9);
+data.addRows(12);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'testAddUserFailure_Duplicate')
 data.setCell(0, 2, 'org.com.test.bankapp.BankServiceTest')
-data.setCell(0, 3, 19);
+data.setCell(0, 3, 20);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'testFindUserByName')
-data.setCell(1, 2, 'org.com.test.bankapp.BankServiceTest')
-data.setCell(1, 3, 3);
+data.setCell(1, 1, 'testUserLogin')
+data.setCell(1, 2, 'org.com.test.bankapp.LoginPageTest')
+data.setCell(1, 3, 2);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'testGetUsers')
+data.setCell(2, 1, 'testValidateUser')
 data.setCell(2, 2, 'org.com.test.bankapp.BankServiceTest')
 data.setCell(2, 3, 2);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'testValidateAdmin')
-data.setCell(3, 2, 'org.com.test.bankapp.BankServiceTest')
+data.setCell(3, 1, 'testInvalidLogin')
+data.setCell(3, 2, 'org.com.test.bankapp.LoginPageTest')
 data.setCell(3, 3, 2);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'testDeleteUserFailure')
+data.setCell(4, 1, 'testValidateAdmin')
 data.setCell(4, 2, 'org.com.test.bankapp.BankServiceTest')
 data.setCell(4, 3, 2);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'testValidateUser')
+data.setCell(5, 1, 'testAddUserSuccess')
 data.setCell(5, 2, 'org.com.test.bankapp.BankServiceTest')
 data.setCell(5, 3, 2);
 data.setCell(6, 0, 6)
-data.setCell(6, 1, 'testAddUserSuccess')
+data.setCell(6, 1, 'testDeleteUserSuccess')
 data.setCell(6, 2, 'org.com.test.bankapp.BankServiceTest')
 data.setCell(6, 3, 2);
 data.setCell(7, 0, 7)
-data.setCell(7, 1, 'testDeleteUserSuccess')
+data.setCell(7, 1, 'testValidateCredentials')
 data.setCell(7, 2, 'org.com.test.bankapp.BankServiceTest')
 data.setCell(7, 3, 2);
 data.setCell(8, 0, 8)
-data.setCell(8, 1, 'testValidateCredentials')
+data.setCell(8, 1, 'testFindUserByName')
 data.setCell(8, 2, 'org.com.test.bankapp.BankServiceTest')
-data.setCell(8, 3, 1);
+data.setCell(8, 3, 2);
+data.setCell(9, 0, 9)
+data.setCell(9, 1, 'testGetUsers')
+data.setCell(9, 2, 'org.com.test.bankapp.BankServiceTest')
+data.setCell(9, 3, 2);
+data.setCell(10, 0, 10)
+data.setCell(10, 1, 'testDeleteUserFailure')
+data.setCell(10, 2, 'org.com.test.bankapp.BankServiceTest')
+data.setCell(10, 3, 1);
+data.setCell(11, 0, 11)
+data.setCell(11, 1, 'testAdminLogin')
+data.setCell(11, 2, 'org.com.test.bankapp.LoginPageTest')
+data.setCell(11, 3, 1);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 35 ms</span>
+              <span class="suite-total-time">Total running time: 40 ms</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -355,71 +412,86 @@ return data;
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">testAddUserFailure_Duplicate</span>
-                <span class="method-start">20 ms</span>
+                <span class="method-start">18 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setup</span>
-                <span class="method-start">47 ms</span>
+                <span class="method-start">44 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">testAddUserSuccess</span>
-                <span class="method-start">48 ms</span>
+                <span class="method-start">45 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setup</span>
-                <span class="method-start">53 ms</span>
+                <span class="method-start">49 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">testDeleteUserFailure</span>
-                <span class="method-start">53 ms</span>
+                <span class="method-start">51 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setup</span>
-                <span class="method-start">57 ms</span>
+                <span class="method-start">55 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">testDeleteUserSuccess</span>
-                <span class="method-start">59 ms</span>
+                <span class="method-start">55 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setup</span>
-                <span class="method-start">63 ms</span>
+                <span class="method-start">60 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">testFindUserByName</span>
-                <span class="method-start">64 ms</span>
+                <span class="method-start">60 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setup</span>
-                <span class="method-start">69 ms</span>
+                <span class="method-start">65 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">testGetUsers</span>
-                <span class="method-start">70 ms</span>
+                <span class="method-start">65 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setup</span>
-                <span class="method-start">74 ms</span>
+                <span class="method-start">70 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">testValidateAdmin</span>
-                <span class="method-start">74 ms</span>
+                <span class="method-start">71 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setup</span>
-                <span class="method-start">79 ms</span>
+                <span class="method-start">77 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">testValidateCredentials</span>
-                <span class="method-start">80 ms</span>
+                <span class="method-start">77 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">testValidateUser</span>
+                <span class="method-start">83 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setup</span>
-                <span class="method-start">84 ms</span>
+                <span class="method-start">83 ms</span>
               </div> <!-- configuration-method before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">org.com.test.bankapp.LoginPageTest</div> <!-- chronological-class-name -->
               <div class="test-method">
-                <span class="method-name">testValidateUser</span>
-                <span class="method-start">84 ms</span>
+                <span class="method-name">testAdminLogin</span>
+                <span class="method-start">91 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">testInvalidLogin</span>
+                <span class="method-start">93 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">testUserLogin</span>
+                <span class="method-start">99 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

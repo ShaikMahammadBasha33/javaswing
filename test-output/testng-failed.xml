@@ -3,17 +3,9 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="org.com.test.bankapp.UserDashboardTest">
-        <methods>
-          <include name="testShowUserDetailsDialog"/>
-          <include name="testDepositAndWithdraw"/>
-          <include name="setup"/>
-        </methods>
-      </class> <!-- org.com.test.bankapp.UserDashboardTest -->
       <class name="org.com.test.bankapp.AdminDashboardTest">
         <methods>
           <include name="setup"/>
-          <include name="testAddAndDeleteUser"/>
           <include name="testRefreshTableAndFilter"/>
         </methods>
       </class> <!-- org.com.test.bankapp.AdminDashboardTest -->

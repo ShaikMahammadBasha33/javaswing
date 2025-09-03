@@ -7,7 +7,7 @@ import static org.testng.Assert.*;
 import org.com.bankapp.BankService;
 import org.com.bankapp.User;
 
-@Test
+
 public class LoginPageTest {
     private final BankService bankService = new BankService();
 
